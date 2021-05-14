@@ -1,0 +1,69 @@
+#include "test_stand.h"
+#include <binarization/naive_binarization.h>
+#include <binarization/mxnet_sse_binarization.h>
+#include <binarization/avx_binarization.h>
+#include <apply/naive_apply.h>
+#include <apply/mxnet_sse_apply.h>
+#include <apply/avx_apply.h>
+
+BENCH_SYNTHETIC_BINARIZATION(100, 100, NaiveBinarization)
+BENCH_SYNTHETIC_BINARIZATION(100, 100, MxNetSseBinarization)
+
+BENCH_SYNTHETIC_BINARIZATION(100, 100, Avx128Binarization)
+BENCH_SYNTHETIC_BINARIZATION(100, 100, Avx256Binarization)
+BENCH_SYNTHETIC_BINARIZATION(100, 100, Avx512Binarization)
+
+BENCH_SYNTHETIC_BINARIZATION(100, 100, Avx128BinarizationOrdered)
+BENCH_SYNTHETIC_BINARIZATION(100, 100, Avx256BinarizationOrdered)
+BENCH_SYNTHETIC_BINARIZATION(100, 100, Avx512BinarizationOrdered)
+
+BENCH_SYNTHETIC_BINARIZATION_TRANSPOSED(100, 100, Avx128BinarizationTransposed)
+BENCH_SYNTHETIC_BINARIZATION_TRANSPOSED(100, 100, Avx256BinarizationTransposed)
+BENCH_SYNTHETIC_BINARIZATION_TRANSPOSED(100, 100, Avx512BinarizationTransposed)
+
+BENCH_SYNTHETIC_BINARIZATION_TRANSPOSED(100, 100, Avx128BinarizationOrderedTransposed)
+BENCH_SYNTHETIC_BINARIZATION_TRANSPOSED(100, 100, Avx256BinarizationOrderedTransposed)
+BENCH_SYNTHETIC_BINARIZATION_TRANSPOSED(100, 100, Avx512BinarizationOrderedTransposed)
+
+
+BENCH_SYNTHETIC_BINARIZATION(1, 100, NaiveBinarization)
+BENCH_SYNTHETIC_BINARIZATION(1, 100, MxNetSseBinarization)
+
+BENCH_SYNTHETIC_BINARIZATION(1, 100, Avx128Binarization)
+BENCH_SYNTHETIC_BINARIZATION(1, 100, Avx256Binarization)
+BENCH_SYNTHETIC_BINARIZATION(1, 100, Avx512Binarization)
+
+BENCH_SYNTHETIC_BINARIZATION(1, 100, Avx128BinarizationOrdered)
+BENCH_SYNTHETIC_BINARIZATION(1, 100, Avx256BinarizationOrdered)
+BENCH_SYNTHETIC_BINARIZATION(1, 100, Avx512BinarizationOrdered)
+
+BENCH_SYNTHETIC_BINARIZATION_TRANSPOSED(1, 100, Avx128BinarizationTransposed)
+BENCH_SYNTHETIC_BINARIZATION_TRANSPOSED(1, 100, Avx256BinarizationTransposed)
+BENCH_SYNTHETIC_BINARIZATION_TRANSPOSED(1, 100, Avx512BinarizationTransposed)
+
+BENCH_SYNTHETIC_BINARIZATION_TRANSPOSED(1, 100, Avx128BinarizationOrderedTransposed)
+BENCH_SYNTHETIC_BINARIZATION_TRANSPOSED(1, 100, Avx256BinarizationOrderedTransposed)
+BENCH_SYNTHETIC_BINARIZATION_TRANSPOSED(1, 100, Avx512BinarizationOrderedTransposed)
+
+BENCH_SYNTHETIC_APPLY(100, 100, NaiveBinarization, NaiveApply)
+BENCH_SYNTHETIC_APPLY(100, 100, MxNetSseBinarization, MxNetSseApply)
+
+BENCH_SYNTHETIC_APPLY(100, 100, Avx128Binarization, Avx128Apply)
+BENCH_SYNTHETIC_APPLY(100, 100, Avx256Binarization, Avx256Apply)
+BENCH_SYNTHETIC_APPLY(100, 100, Avx512Binarization, Avx512Apply)
+
+BENCH_SYNTHETIC_APPLY(100, 100, Avx128BinarizationOrdered, Avx128ApplyOrdered)
+BENCH_SYNTHETIC_APPLY(100, 100, Avx256BinarizationOrdered, Avx256ApplyOrdered)
+BENCH_SYNTHETIC_APPLY(100, 100, Avx512BinarizationOrdered, Avx512ApplyOrdered)
+
+BENCH_SYNTHETIC_APPLY(100, 100, Avx128Binarization, Avx128ApplyOneTreeFetch)
+BENCH_SYNTHETIC_APPLY(100, 100, Avx256Binarization, Avx256ApplyOneTreeFetch)
+BENCH_SYNTHETIC_APPLY(100, 100, Avx512Binarization, Avx512ApplyOneTreeFetch)
+
+BENCH_SYNTHETIC_APPLY(100, 100, Avx128Binarization, Avx128ApplyInstantFetch)
+BENCH_SYNTHETIC_APPLY(100, 100, Avx256Binarization, Avx256ApplyInstantFetch)
+BENCH_SYNTHETIC_APPLY(100, 100, Avx512Binarization, Avx512ApplyInstantFetch)
+
+BENCH_SYNTHETIC_APPLY(100, 100, Avx512Binarization, Avx512ApplyShuffleFetch)
+
+BENCHMARK_MAIN();

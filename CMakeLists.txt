@@ -1,0 +1,8 @@
+cmake_minimum_required(VERSION 3.8)
+project(research-optimization-of-decision-tree-evaluation)
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -mavx512f -mavx512bw -mavx512cd -mavx512dq -mavx512vl")
+add_executable(test_stand test_stand/test_stand.cpp binarization/avx_binarization.cpp apply/avx_apply.cpp)
+add_subdirectory(benchmark REQUIRED)
+target_link_libraries(test_stand benchmark::benchmark)
+include_directories(${PROJECT_SOURCE_DIR})
